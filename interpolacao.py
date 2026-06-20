@@ -25,3 +25,31 @@ def interpolacao_lagrange(x_pontos, y_pontos, x_alvo):
         resultado += y_pontos[i] * termo_lagrange
 
     return resultado
+
+def interpolacao_newton(x_pontos, y_pontos, x_alvo):
+
+    n = len(x_pontos)
+    
+    # Cria a tabela triangular preenchida com zeros usando listas puras
+    tabela = [[0.0] * n for _ in range(n)]
+    
+    # Preenche a primeira coluna com os valores de Y
+    for i in range(n):
+        tabela[i][0] = y_pontos[i]
+        
+    # Constrói a tabela de diferenças divididas
+    for j in range(1, n):
+        for i in range(n - j):
+            num = tabela[i + 1][j - 1] - tabela[i][j - 1]
+            den = x_pontos[i + j] - x_pontos[i]
+            tabela[i][j] = num / den
+
+    # Calcula o valor interpolado final
+    resultado = tabela[0][0]
+    termo_multiplicador = 1.0
+    
+    for i in range(1, n):
+        termo_multiplicador *= (x_alvo - x_pontos[i - 1])
+        resultado += tabela[0][i] * termo_multiplicador
+        
+    return resultado
