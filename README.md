@@ -17,3 +17,7 @@ Commit seguinte a inclusão inicial: Inclusão do método de Newton.
 - Adicionada a função 'interpolacao_newton' ao módulo de interpolação.
 - Implementada a construção da tabela de diferenças divididas usando estruturas nativas.
 - Finalizada a primeira parte do projeto (Problema 1 - Telemetria do Drone).
+Implementação seguinte.
+- Adicionado o caso de teste do Problema 2 (Data Center) com Gregory-Newton.
+- Adicionado o caso de teste do Problema 3 (Braço Robótico) avaliando Spline Linear e Cúbica Natural.
+- Atualizados os imports do módulo 'interpolacao'.
