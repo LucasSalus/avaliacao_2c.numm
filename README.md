@@ -21,3 +21,13 @@ Implementação seguinte.
 - Adicionado o caso de teste do Problema 2 (Data Center) com Gregory-Newton.
 - Adicionado o caso de teste do Problema 3 (Braço Robótico) avaliando Spline Linear e Cúbica Natural.
 - Atualizados os imports do módulo 'interpolacao'.
+Atualização seguinte:
+- Criação da biblioteca de integração.py.
+- Incluído o import do módulo 'integracao'.
+- Adicionado o bloco de testes para o Problema 4 (Integração Numérica).
+- Configurada a chamada simultânea das regras de Newton-Cotes para validação dos resultados.
+Próxima implementação:
+- Corrigidos todos os datasets de teste com base nas especificações finais do PDF.
+- Implementado o Ajuste Linear por Mínimos Quadrados (MMQ) para previsão de tráfego.
+- Desenvolvida a Quadratura de Gauss com n=2 pontos para integração de funções contínuas.
+- Projeto totalmente finalizado atendendo aos requisitos da Unidade 2.
