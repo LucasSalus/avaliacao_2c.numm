@@ -1,5 +1,5 @@
 from interpolacao import interpolacao_lagrange, interpolacao_newton, interpolacao_gregory_newton, spline_linear, spline_cubica_natural
-from integracao import regra_trapezios_pontos, regra_simpson_13_pontos, regra_simpson_38_pontos
+from integracao import regra_trapezios_pontos, regra_simpson_13_pontos, regra_simpson_38_pontos,mmq_ajuste_linear, quadratura_gauss_2pontos
 
 # Dados do Dataset do Drone (Enunciado do Problema 1)
 tempos = [1.0, 2.0, 3.0, 4.0, 5.0]
@@ -65,3 +65,27 @@ res_p5_simpson13 = regra_simpson_13_pontos(velocidades_carro, h_carro)
 print("--- CONSUMO DO CARRO ELÉTRICO (PROBLEMA 5) ---")
 print(f"Distância por Trapézios: {res_p5_trapezios:.2f} km")
 print(f"Distância por 1/3 Simpson: {res_p5_simpson13:.2f} km\n")
+
+# --- PROBLEMA 6: TRÁFEGO DE REDE DEINF (MMQ) ---
+horas = [8, 9, 10, 11, 12]
+acessos = [2.1, 2.8, 3.1, 4.0, 4.8]
+hora_alvo = 13
+
+coef_a, coef_b = mmq_ajuste_linear(horas, acessos)
+previsao_13h = coef_a * hora_alvo + coef_b
+
+print("--- TRÁFEGO DE REDE DEINF (MMQ) ---")
+print(f"Equação da reta ajustada: P1(x) = {coef_a:.4f}x + ({coef_b:.4f})")
+print(f"Tráfego previsto às 13h: {previsao_13h:.4f} milhares de acessos\n")
+
+# --- PROBLEMA 7: TORQUE DO MOTOR (Gauss) ---
+def f_torque(x):
+    return 5*(x**3) + x**2 - 12*x + 4
+
+a_gauss = -1.0
+b_gauss = 1.0
+
+res_trabalho_gauss = quadratura_gauss_2pontos(f_torque, a_gauss, b_gauss)
+
+print("--- TORQUE DO MOTOR (QUADRATURA DE GAUSS) ---")
+print(f"Trabalho total calculado (n=2): {res_trabalho_gauss:.4f}\n")
