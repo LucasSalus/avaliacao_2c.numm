@@ -53,3 +53,32 @@ def interpolacao_newton(x_pontos, y_pontos, x_alvo):
         resultado += tabela[0][i] * termo_multiplicador
         
     return resultado
+
+def interpolacao_gregory_newton(x_pontos, y_pontos, x_alvo):
+    
+    n = len(x_pontos)
+    h = x_pontos[1] - x_pontos[0]  
+    
+    tabela = [[0.0] * n for _ in range(n)]
+    
+    for i in range(n):
+        tabela[i][0] = y_pontos[i]
+        
+    for j in range(1, n):
+        for i in range(n - j):
+            tabela[i][j] = tabela[i + 1][j - 1] - tabela[i][j - 1]
+            
+    u = (x_alvo - x_pontos[0]) / h
+    
+    resultado = tabela[0][0]
+    termo_multiplicador = 1.0
+    
+    for i in range(1, n):
+        fatorial = 1
+        for k in range(1, i + 1):
+            fatorial *= k
+            
+        termo_multiplicador *= (u - (i - 1))
+        resultado += (termo_multiplicador * tabela[0][i]) / fatorial
+        
+    return resultado
